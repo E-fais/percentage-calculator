@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seive Method Calculator</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .calculator {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .input-group {
+      margin-bottom: 10px;
+    }
+    .input-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 5px;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Formula Calculator</h1>
+    <div class="input-group">
+      <label for="total-mass">Total Mass:</label>
+      <input type="number" step="0.1" id="total-mass" />
+    </div>
+    <div class="input-group">
+      <label for="percentage-passing-1">Percentage Passing 1:</label>
+      <input type="number" step="0.1" id="percentage-passing-1" />
+    </div>
+    <div class="input-group">
+      <label for="percentage-passing-2">Percentage Passing 2:</label>
+      <input type="number" step="0.1" id="percentage-passing-2" />
+    </div>
+    <button onclick="calculate()">Calculate</button>
+    <div class="result">
+      <p>Percentage Retained: <span id="percentage-retained">0</span>%</p>
+      <p>Weight Retained: <span id="weight-retained">0</span></p>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code
+    function calculate() {
+      // Get input values
+      var totalMass = parseFloat(document.getElementById('total-mass').value);
+      var percentagePassing1 = parseFloat(document.getElementById('percentage-passing-1').value);
+      var percentagePassing2 = parseFloat(document.getElementById('percentage-passing-2').value);
+
+      // Calculate percentage retained
+      var percentageRetained = percentagePassing1 - percentagePassing2;
+
+      // Calculate weight retained
+      var weightRetained = (percentageRetained * totalMass) / 100;
+
+      // Update result display
+      document.getElementById('percentage-retained').textContent = percentageRetained.toFixed(1);
+      document.getElementById('weight-retained').textContent = weightRetained.toFixed(1);
+    }
+  </script>
+</body>
+</html>
